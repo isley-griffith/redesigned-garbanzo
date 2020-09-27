@@ -2,7 +2,7 @@ CXX = g++
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 TARGET = target/redesigned-garbanzo
 INCLUDE = -I ./include
-CFLAGS = -g -Wall $(INCLUDE)
+CFLAGS = -g -Wall -std=c++11 $(INCLUDE)
 
 CLEANFILES = obj/* *~ $(TARGET)
 
