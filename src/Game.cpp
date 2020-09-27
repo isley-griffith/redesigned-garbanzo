@@ -3,28 +3,53 @@
 
 #include <iostream>
 
+Game::Game(std::string name) {
+    mName = name;
+}
+
+void Game::create_window() {
+    window.create(sf::VideoMode(800, 800), mName);
+    testShape.setRadius(100.f);
+    testShape.setFillColor(sf::Color::Green);
+}
+
 void Game::render() {
-    sf::RenderWindow window(sf::VideoMode(800, 800), mName);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    window.clear();
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+    window.draw(testShape);
+
+    window.display();
+}
+
+void Game::handle_event(const sf::Event &event) {
+    if (event.type == sf::Event::Closed)
+        mRunning = false;
+}
+
+void Game::handle_input() {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
     }
 }
 
 void Game::Run() {
-    render();
+    create_window();
 
-    std::cout << mName << std::endl;
+    while (window.isOpen() && mRunning) {
+        sf::Event event;
+
+        handle_input();
+        while (window.pollEvent(event))
+            handle_event(event);
+
+        render();
+        // sf::sleep(sf::milliseconds(10));
+    }
+    window.close();
 }
