@@ -14,7 +14,10 @@ obj/main.o: src/main.cpp
 obj/Game.o: src/Game.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-$(TARGET): obj/main.o obj/Game.o
+obj/Tile.o: src/Tile.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(TARGET): obj/main.o obj/Game.o obj/Tile.o
 	$(CXX) obj/*.o -o $(TARGET) $(LDFLAGS)
 
 

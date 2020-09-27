@@ -1,12 +1,16 @@
 #include <Game.hpp>
 #include <SFML/Graphics.hpp>
+#include <Tile.hpp>
+#include <cstdint>
 
 #include <iostream>
 
 void Game::render() {
     sf::RenderWindow window(sf::VideoMode(800, 800), mName);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    // sf::CircleShape shape(100.f);
+    // shape.setFillColor(sf::Color::Black);
+
+    Tile aTile(2);
 
     while (window.isOpen())
     {
@@ -18,7 +22,7 @@ void Game::render() {
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(aTile.drawTile());
         window.display();
     }
 }
