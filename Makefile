@@ -1,14 +1,20 @@
 CXX = g++
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
-TARGET = g.out
-SFML=
+TARGET = target/redesigned-garbanzo
+INCLUDE = -I ./include
+CFLAGS = -g -Wall $(INCLUDE)
+
+CLEANFILES = obj/* *~ $(TARGET)
 
 all: $(TARGET)
 
-run: main.cpp
-	$(CXX) $(SFML) main.cpp -o $(TARGET) $(LDFLAGS)
+obj/main.o: src/main.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
 
-$(TARGET): run
+$(TARGET): obj/main.o
+	$(CXX) $< -o $(TARGET) $(LDFLAGS)
 
+
+.PHONY: clean
 clean:
-	rm -f *.o *~ $(TARGET)
+	rm -f $(CLEANFILES)

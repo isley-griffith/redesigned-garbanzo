@@ -1,10 +1,11 @@
 #include <SFML/Window.hpp>
+#include <defaults.hpp>
 
 int main()
 {
 
-    sf::Window window(sf::VideoMode(800, 600), "My window");
-    
+    sf::Window window(sf::VideoMode(800, 600), GAME_NAME);
+
     // change the position of the window (relatively to the desktop)
     window.setPosition(sf::Vector2i(10, 50));
 
@@ -15,9 +16,9 @@ int main()
     window.setTitle("SFML window");
 
     // get the size of the window
-    sf::Vector2u size = window.getSize();
-    unsigned int width = size.x;
-    unsigned int height = size.y;
+    // sf::Vector2u size = window.getSize();
+    // unsigned int width = size.x;
+    // unsigned int height = size.y;
 
 
     // run the program as long as the window is open
