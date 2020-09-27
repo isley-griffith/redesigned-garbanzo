@@ -1,5 +1,7 @@
 #include <Game.hpp>
 #include <SFML/Graphics.hpp>
+#include <Tile.hpp>
+#include <cstdint>
 
 #include <iostream>
 
