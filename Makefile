@@ -11,8 +11,11 @@ all: $(TARGET)
 obj/main.o: src/main.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-$(TARGET): obj/main.o
-	$(CXX) $< -o $(TARGET) $(LDFLAGS)
+obj/Game.o: src/Game.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(TARGET): obj/main.o obj/Game.o
+	$(CXX) obj/*.o -o $(TARGET) $(LDFLAGS)
 
 
 .PHONY: clean
